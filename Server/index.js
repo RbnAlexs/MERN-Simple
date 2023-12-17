@@ -2,6 +2,7 @@ const express = require("express");
 const mongoose = require("mongoose");
 const cors = require("cors");
 const Todomodel = require("./Models/Todo");
+require("dotenv").config();
 
 const app = express();
 app.use(cors());
@@ -13,7 +14,7 @@ app.listen(3001, () => {
 
 mongoose
   .connect(
-    "mongodb+srv://admin:holamundo@cluster0.fkhn9pc.mongodb.net/?retryWrites=true&w=majority"
+    process.env.MONGODB_URI
   )
   //.connect(process.env.MONGODB_URI)
   .then(() => console.log("MongoDB connected :D"))
